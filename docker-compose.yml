@@ -1,0 +1,25 @@
+services:
+  qdrant:
+    image: qdrant/qdrant:v1.15.5
+    ports:
+      - "127.0.0.1:6333:6333"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    restart: unless-stopped
+  api:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      LMSTUDIO_BASE_URL: http://host.docker.internal:1234/v1
+      QDRANT_URL: http://qdrant:6333
+      HF_HOME: /models
+    env_file: .env
+    volumes:
+      - model_cache:/models
+    depends_on:
+      - qdrant
+    restart: unless-stopped
+volumes:
+  qdrant_data:
+  model_cache:

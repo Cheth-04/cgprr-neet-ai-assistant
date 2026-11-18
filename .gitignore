@@ -1,0 +1,53 @@
+.env
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+.DS_Store
+evaluation_results.csv
+
+# Python environments and caches
+venv/
+env/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local databases, model files and caches
+qdrant_storage/
+storage/
+models/
+.cache/
+*.gguf
+*.safetensors
+*.onnx
+
+# Runtime and generated files
+*.log
+logs/
+tmp/
+temp/
+evaluation_results.csv
+
+# macOS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Archives
+*.zip
+*.tar.gz

@@ -1,0 +1,9 @@
+college_id,college_name,state,city,course,institution_type,total_seats,data_type
+FC001,Sample Riverbend Medical Institute,Tamil Nadu,Chennai,MBBS,Fictional Government,120,SYNTHETIC
+FC002,Sample Lotus Medical Academy,Tamil Nadu,Coimbatore,MBBS,Fictional Private,100,SYNTHETIC
+FC003,Sample Hillside Health College,Tamil Nadu,Salem,MBBS,Fictional Private,80,SYNTHETIC
+FC004,Sample Marina Dental Academy,Tamil Nadu,Chennai,BDS,Fictional Private,60,SYNTHETIC
+FC005,Sample Sapphire Medical Institute,Karnataka,Bengaluru,MBBS,Fictional Government,125,SYNTHETIC
+FC006,Sample Cedar Medical College,Karnataka,Mysuru,MBBS,Fictional Private,100,SYNTHETIC
+FC007,Sample Valley Health Academy,Karnataka,Hubballi,MBBS,Fictional Private,90,SYNTHETIC
+FC008,Sample Banyan Dental Institute,Karnataka,Mangaluru,BDS,Fictional Private,65,SYNTHETIC
