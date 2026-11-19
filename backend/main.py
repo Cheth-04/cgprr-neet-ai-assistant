@@ -8,7 +8,6 @@ from .data import exact_rank_answer, extract_constraints, matching_records, join
 from .retrieval import ingest, search
 from .llm import generate
 from .grounding import numerical_claims_supported
-from .grounding import numerical_claims_supported
 
 app = FastAPI(title='CGPRR Synthetic NEET RAG', version='0.3.0',
     description='LOCAL ONLY. All college and rank data is fictional.')

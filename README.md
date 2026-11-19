@@ -1,12 +1,12 @@
 # CGPRR — Local NEET AI assistant (Track A)
 
-**Fully fictional data. Never use this program for real NEET counselling.** This submission-ready *prototype* combines local RAG and a deterministic synthetic college predictor. All model inference is local through **LM Studio**, not Ollama. The package includes a frontend, backend, dataset, 16-case evaluation, design note, and demo guide. Live test evidence should be generated and reviewed on the candidate's machine.
+**Fully fictional data. Never use this program for real NEET counselling.** This submission-ready *prototype* combines local RAG and a deterministic synthetic college predictor. All model inference is local through **LM Studio**, not Ollama. The package includes a frontend, backend, dataset, 16-case evaluation, design note, and demo guide. The candidate ran and recorded a live 16-case evaluation on 19 November 2026 (see `docs/EVALUATION_RESULTS.md`).
 
 ## Prerequisites (macOS Apple Silicon, 8 GB RAM intended development target)
 - macOS with Python 3.11 or 3.12, Docker Desktop, and LM Studio installed. Terminal commands below assume `python3` works. Docker Desktop must be running.
-- LM Studio: load an open-weight local text-capable model. The model used in the candidate's first successful live smoke test was **`qwen/qwen3-vl-4b`** (exact quantization not yet recorded). Qwen2.5 3B Instruct Q4 is an alternative, not the demonstrated model., load it, open **Developer** and start the local server on port **1234**. Use the exact model ID the server returns.
+- LM Studio: load an open-weight local text-capable model. The model used in the candidate's successful live tests was **`qwen/qwen3-vl-4b`** (exact quantization not yet recorded). Qwen2.5 3B Instruct Q4 is an alternative, not the demonstrated model. In LM Studio, load your chosen model, open **Developer**, and start the local server on port **1234**. Use the exact model ID the server returns.
 - Internet access required for first-time pip installation and the initial downloads of Qwen and local `BAAI/bge-small-en-v1.5` embeddings.
-- This setup has been tested with automated local code tests in the packaging environment; **live LM Studio and Docker services must be tested on your Mac**.
+- The candidate confirmed a live smoke test and a 16/16 live evaluation on macOS (native FastAPI, Docker-hosted Qdrant, and locally hosted LM Studio). Fully containerized FastAPI deployment remains unverified.
 
 ## Option A: simplest — Python locally + Qdrant Docker + LM Studio locally (recommended)
 
