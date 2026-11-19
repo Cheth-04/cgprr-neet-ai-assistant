@@ -1,10 +1,10 @@
 # CGPRR — Local NEET AI assistant (Track A)
 
-**Fully fictional data. Never use this program for real NEET counselling.** This submission-ready *prototype* combines local RAG and a deterministic synthetic college predictor. All model inference is local through **LM Studio**, not Ollama. The package includes a frontend, backend, dataset, 16-case evaluation, design note, and demo guide.
+**Fully fictional data. Never use this program for real NEET counselling.** This submission-ready *prototype* combines local RAG and a deterministic synthetic college predictor. All model inference is local through **LM Studio**, not Ollama. The package includes a frontend, backend, dataset, 16-case evaluation, design note, and demo guide. Live test evidence should be generated and reviewed on the candidate's machine.
 
 ## Prerequisites (macOS Apple Silicon, 8 GB RAM intended development target)
 - macOS with Python 3.11 or 3.12, Docker Desktop, and LM Studio installed. Terminal commands below assume `python3` works. Docker Desktop must be running.
-- LM Studio: download **Qwen2.5 3B Instruct GGUF Q4** (4-bit variant), load it, open **Developer** and start the local server on port **1234**. Use the exact model ID the server returns.
+- LM Studio: load an open-weight local text-capable model. The model used in the candidate's first successful live smoke test was **`qwen/qwen3-vl-4b`** (exact quantization not yet recorded). Qwen2.5 3B Instruct Q4 is an alternative, not the demonstrated model., load it, open **Developer** and start the local server on port **1234**. Use the exact model ID the server returns.
 - Internet access required for first-time pip installation and the initial downloads of Qwen and local `BAAI/bge-small-en-v1.5` embeddings.
 - This setup has been tested with automated local code tests in the packaging environment; **live LM Studio and Docker services must be tested on your Mac**.
 
@@ -65,7 +65,7 @@ python -m pytest tests/ -v
 python scripts/evaluate.py         # offline deterministic tests; 2 cases SKIPPED
 python scripts/evaluate.py --live  # requires live Qdrant and LM Studio; includes summary generation
 ```
-The result CSV is generated as `evaluation_results.csv`. **Do not report offline unit-test passing as proof of live model behavior.** Read `docs/DESIGN_NOTE.md` for GPU/VRAM, privacy, cost and limitations. Read `docs/DEMO_SCRIPT.md` before recording your 3–5 minute demo.
+The result CSV is generated as `evaluation_results.csv`. A **live** evaluation also generates `docs/EVALUATION_RESULTS.md`; review and commit that report if accurate. The CSV remains ignored. **Do not report offline unit-test passing as proof of live model behavior.** Read `docs/DESIGN_NOTE.md` for GPU/VRAM, privacy, cost and limitations. Read `docs/DEMO_SCRIPT.md` before recording your 3–5 minute demo.
 
 ## Troubleshooting
 - `curl .../v1/models` fails: start LM Studio's Developer server; ensure correct port 1234.
@@ -76,10 +76,17 @@ The result CSV is generated as `evaluation_results.csv`. **Do not report offline
 - `Retrieval unavailable`: run `/ingest` before asking free-form questions.
 - No answer for broad free-form question: retrieval threshold may filter out sources; inspect synthetic dataset and tune `SCORE_THRESHOLD` carefully. Never remove citation/refusal protections to fake a pass.
 - Docker API cannot connect to LM Studio: run Option A, or enable local network serving and confirm `host.docker.internal:1234` is reachable.
-- Mac out of memory: close other applications, use Qwen 2.5 3B Q4, smaller context window, and native Python backend Option A.
+- Mac out of memory: close other applications, use a compatible smaller Q4 model and a smaller context window, and native Python backend Option A.
 
 ## Data privacy and honest limitations
 All 8 colleges and 64 cutoff records are **invented**; no student or internal business data is included. The API is bound to localhost in prescribed setup, has no authentication and is **not production-ready**. Model downloads contact external repositories initially; inference stays local. Citation ID checks reduce made-up sources but do not guarantee factual correctness in every generated sentence. No actual RTX 6000 benchmark has been run. Multi-company separation, production audit logging and authentication are design proposals rather than implemented claims.
 
 ## Disclosure
 ChatGPT (AI coding assistant) was used to draft code and documentation. The candidate must test and understand the implementation and disclose any other tools used before submitting. Python and English used as required in the brief.
+
+## Verification record and important caveats
+- Candidate-reported live smoke test: **PASS**, using LM Studio model ID `qwen/qwen3-vl-4b` on an Apple MacBook Air M1 with 8 GB unified memory. Exact quantization should be confirmed using LM Studio before final submission.
+- Docker end-to-end mode has not been independently confirmed; native macOS FastAPI + Qdrant Docker + LM Studio is the demonstrated workflow.
+- Qdrant server is pinned to `v1.15.5`, and the Python client is constrained to the compatible `1.15–1.16` range. Reinstall requirements in the virtual environment and rebuild the API Docker image before testing it.
+- The numeric grounding check rejects numerals absent from retrieved evidence, but it is not a semantic verifier. It can reject benign numbers and cannot prove factual correctness of non-numeric claims.
+- Before sharing this repository, confirm the assignment recipient is permitted to access it; this take-home may be better kept private.

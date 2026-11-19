@@ -7,6 +7,8 @@ from . import settings
 from .data import exact_rank_answer, extract_constraints, matching_records, joined_records
 from .retrieval import ingest, search
 from .llm import generate
+from .grounding import numerical_claims_supported
+from .grounding import numerical_claims_supported
 
 app = FastAPI(title='CGPRR Synthetic NEET RAG', version='0.3.0',
     description='LOCAL ONLY. All college and rank data is fictional.')
@@ -59,7 +61,7 @@ def chat(request: ChatRequest):
         raise HTTPException(status_code=503, detail=f'Local LLM unavailable: {exc}') from exc
     # Only return source IDs actually supplied to the LLM and cited in its answer.
     cited = [r['source_id'] for r in records if f"[{r['source_id']}]" in answer]
-    if answer.lower().startswith('not in the sources') or not cited:
+    if answer.lower().startswith('not in the sources') or not cited or not numerical_claims_supported(answer, records):
         return {'answer': 'Not in the sources.', 'sources': [], 'refused': True, 'data': 'SYNTHETIC'}
     return {'answer': answer, 'sources': cited, 'refused': False, 'data': 'SYNTHETIC'}
 

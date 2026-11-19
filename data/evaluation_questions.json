@@ -7,7 +7,8 @@
     },
     "expect_refused": false,
     "needs_live": false,
-    "expect_source": "cutoffs.csv#CR0005"
+    "expect_source": "cutoffs.csv#CR0005",
+    "expect_closing_rank": 16000
   },
   {
     "id": "E02",
@@ -17,7 +18,8 @@
     },
     "expect_refused": false,
     "needs_live": false,
-    "expect_source": "cutoffs.csv#CR0001"
+    "expect_source": "cutoffs.csv#CR0001",
+    "expect_closing_rank": 14800
   },
   {
     "id": "E03",
@@ -27,7 +29,8 @@
     },
     "expect_refused": false,
     "needs_live": false,
-    "expect_source": "cutoffs.csv#CR0006"
+    "expect_source": "cutoffs.csv#CR0006",
+    "expect_closing_rank": 22400
   },
   {
     "id": "E04",
@@ -37,7 +40,8 @@
     },
     "expect_refused": false,
     "needs_live": false,
-    "expect_source": "cutoffs.csv#CR0013"
+    "expect_source": "cutoffs.csv#CR0013",
+    "expect_closing_rank": 42035
   },
   {
     "id": "E05",
@@ -47,7 +51,8 @@
     },
     "expect_refused": false,
     "needs_live": false,
-    "expect_source": "cutoffs.csv#CR0029"
+    "expect_source": "cutoffs.csv#CR0029",
+    "expect_closing_rank": 115105
   },
   {
     "id": "E06",
@@ -93,7 +98,8 @@
     },
     "expect_refused": false,
     "needs_live": false,
-    "expect_source": "cutoffs.csv#CR0005"
+    "expect_source": "cutoffs.csv#CR0005",
+    "expect_closing_rank": 16000
   },
   {
     "id": "E11",
@@ -102,7 +108,8 @@
       "question": "Summarize FC001 for 2025 GENERAL."
     },
     "expect_refused": false,
-    "needs_live": true
+    "needs_live": true,
+    "expect_source": "cutoffs.csv#CR0005"
   },
   {
     "id": "E12",
@@ -111,7 +118,8 @@
       "question": "Summarize FC002 for 2025 OBC."
     },
     "expect_refused": false,
-    "needs_live": true
+    "needs_live": true,
+    "expect_source": "cutoffs.csv#CR0014"
   },
   {
     "id": "E13",
@@ -160,6 +168,7 @@
     },
     "expect_refused": false,
     "needs_live": false,
-    "expect_source": "cutoffs.csv#CR0005"
+    "expect_source": "cutoffs.csv#CR0005",
+    "expect_closing_rank": 16000
   }
 ]
